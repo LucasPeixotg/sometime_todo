@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <title>Sometime</title>
+    </head>
+    <body>
+    
+        <nav class="transparent-background">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo left hide-on-med-and-down">Sometime</a>
+                {% if user.is_authenticated %}
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                {% endif %}
+                <ul id="nav-mobile" class="right brand-logo">
+                    {% if user.is_authenticated %}
+                        <li class="hide-on-med-and-down"><a href="/tasks">Tasks</a></li>
+                        <li class="hide-on-med-and-down"><a href="/tasks/create">New Task</a></li>
+                        <li><a href="/logout" class="waves-effect waves-light btn red">Logout</a></li>
+                    {% else %}
+
+                        <li><a href="/register">Sign-up</a></li>
+                        <li><a href="/login" class="waves-effect waves-light btn green">Login</a></li>
+                        
+                    {% endif %}
+                        
+                    </ul>
+                </div>
+            </nav>
+            
+        
+        {% if user.is_authenticated %}
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tasks">Tasks</a></li>
+                <li><a href="/tasks/create">New Task</a></li>
+                <li><a href="/logout" class="center waves-effect waves-light btn red">Logout</a></li>
+            </ul>
+        {% endif %}
+         
+
+        <div class="container">
+            <div class="divider"></div>
+            {% block main %}
+                
+            {% endblock main%}
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.sidenav')
+                var instances = M.Sidenav.init(elems, {})
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+{% if user.tasks.all %}
+    <ul class="collection container section" style="border: none;">
+        {% for task in user.tasks.all %}
+            <li class="collection-item avatar {% if task.checked %}grey lighten-4{% endif %}">
+                <a href="{{ task.id }}/check">
+                    <i class="material-icons circle green" style="font-size: 30px;">
+                        {% if task.checked %}
+                            check
+                        {% else %}
+                            check_box_outline_blank
+                        {% endif %}
+                    </i>
+                </a>
+
+                <span class="title"> {{ task.title }} </span>
+                <p> {{ task.description }} </p>
+                <a href="{{ task.id }}/delete" class="secondary-content"><i class="material-icons delete">delete</i></a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <div class="section">
+        <h3 class="center">You don't have any task</h3>
+        <h6 class="center">Create one <a href="create/">HERE</a></h6>
+    </div>
+
+{% endif %}
+
+{% endblock main %}

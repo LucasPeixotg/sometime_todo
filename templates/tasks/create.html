@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h2 class="center">
+    Create a Task
+</h2>
+<div class="container col s12">
+    <div class="row input-field">
+        <div class="col s1 m2 l3"></div>
+        <form class="card center col s10 m8 l6 z-depth-4 grey-text" id="authentication" method="POST" >
+            {% csrf_token %}
+            {{ form }}
+            <input class="waves-light waves-effect btn green section" id="white-text" type="submit" value="Create">
+        </form> 
+    </div>
+</div>
+
+{% endblock main %}
