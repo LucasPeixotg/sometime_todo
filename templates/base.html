@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head> 
@@ -8,7 +6,60 @@
         <!--Import materialize.css-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background: #222629;
+                color: #fff;
+                width: 100%;
+            }
+
+            .transparent-background {
+                background: #0000; 
+                box-shadow: none;
+            }
+
+            #authentication {
+                padding: 30px 10px;
+            }
+
+            #authentication label {
+                display: block;
+                color: black;
+                font-size: large;
+            }
+
+            #authentication .helptext {
+                display: none;
+            }
+
+            #authentication .errorlist li {
+                color: red;
+            }
+
+            #white-text {
+                cursor: pointer;
+                color: #fff;
+            }
+
+            /* label underline focus color */
+            #authentication input:focus, #authentication textarea:focus {
+                border-bottom: 1px solid #4CAF50;
+                box-shadow: 0 1px 0 0 #4CAF50;
+            }
+
+            .delete {
+                color: red;
+            }
+
+            .collection-item {
+                color: black;
+            }
+        </style>
         <title>Sometime</title>
     </head>
     <body>
